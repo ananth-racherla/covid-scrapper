@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2alpha4
+kind: Config
+metadata:
+  name: covid-scrapper
+build:
+  artifacts:
+  - image: covid-scrapper
+    context: src
+  local:
+    push: false
+deploy:
+  kubectl:
+    manifests:
+    - k8s/deployment.yaml
