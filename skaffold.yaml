@@ -5,10 +5,13 @@ metadata:
 build:
   artifacts:
   - image: covid-scrapper
-    context: src
+    context: .
   local:
     push: false
+  tagPolicy:
+    envTemplate:
+       template: "{{.IMAGE_NAME}}:latest"
 deploy:
   kubectl:
     manifests:
-    - k8s/deployment.yaml
+    - k8s/job.yaml
